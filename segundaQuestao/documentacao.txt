@@ -12,7 +12,7 @@ de uma danceteria utilizando filas dinâmicas em C++.
 O sistema recebe pessoas na fila e forma pares de
 dança respeitando a ordem de chegada.
 
-As regras utilizadas são:
+As regras utilizadas na questão são:
 
 - Homem dança com mulher
 - Mulher dança com homem
@@ -347,47 +347,8 @@ NÃO → Entra na fila
 ↓
 Atualiza filas
 
-
 ========================================================
-14. COMPLEXIDADE DO ALGORITMO
-========================================================
-
-Inserção:      O(1)
-Remoção:       O(1)
-Verificação:   O(1)
-
-As operações possuem complexidade constante devido
-ao uso dos ponteiros de frente e trás.
-
-
-========================================================
-15. JUSTIFICATIVA DA SOLUÇÃO
-========================================================
-
-A utilização da fila foi escolhida porque a estrutura
-FIFO representa corretamente a ordem de chegada das
-pessoas na danceteria.
-
-Isso garante que:
-
-quem chegou primeiro
-dance primeiro.
-
-
-========================================================
-16. VANTAGENS DA SOLUÇÃO
-========================================================
-
-- Estrutura dinâmica
-- Crescimento automático
-- Controle eficiente de memória
-- Organização modular
-- Encapsulamento
-- Respeito à ordem de chegada
-
-
-========================================================
-17. CONCLUSÃO
+14. CONCLUSÃO
 ========================================================
 
 O projeto demonstrou a aplicação prática de filas

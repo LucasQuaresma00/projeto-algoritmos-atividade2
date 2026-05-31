@@ -333,33 +333,8 @@ Verifica igualdade
 ↓
 Retorna verdadeiro ou falso
 
-
 ========================================================
-15. COMPLEXIDADE DO ALGORITMO
-========================================================
-
-Inserção:      O(1)
-Remoção:       O(1)
-Verificação:   O(n)
-
-
-========================================================
-16. JUSTIFICATIVA DA SOLUÇÃO
-========================================================
-
-A utilização da pilha foi escolhida porque sua
-característica LIFO permite inverter naturalmente
-a ordem dos caracteres da palavra.
-
-Isso possibilita comparar:
-- palavra original
-- palavra invertida
-
-sem necessidade de criar outra string manualmente.
-
-
-========================================================
-17. CONCLUSÃO
+15. CONCLUSÃO
 ========================================================
 
 O projeto demonstrou a aplicação prática de pilhas
