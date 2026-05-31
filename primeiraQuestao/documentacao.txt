@@ -1,0 +1,377 @@
+========================================================
+DOCUMENTAÇÃO — VERIFICADOR DE PALÍNDROMO
+UTILIZANDO PILHA DINÂMICA EM C++
+========================================================
+
+1. OBJETIVO DO PROJETO
+--------------------------------------------------------
+
+O projeto tem como objetivo verificar se uma palavra
+ou frase é um palíndromo utilizando o conceito de
+pilha dinâmica em C++.
+
+Um palíndromo é uma sequência que pode ser lida da
+mesma forma da esquerda para a direita e da direita
+para a esquerda.
+
+Exemplos:
+
+arara  -> Verdadeiro
+ovo    -> Verdadeiro
+radar  -> Verdadeiro
+casa   -> Falso
+
+
+========================================================
+2. CONCEITOS UTILIZADOS
+========================================================
+
+O projeto utiliza os seguintes conceitos:
+
+- Pilha dinâmica
+- Lista encadeada
+- Ponteiros
+- TAD (Tipo Abstrato de Dados)
+- Alocação dinâmica de memória
+- Encapsulamento
+
+
+========================================================
+3. ESTRUTURA DO PROJETO
+========================================================
+
+O sistema foi dividido em arquivos para melhorar a
+organização do código.
+
+Arquivos:
+
+Pilha.h
+Pilha.cpp
+main.cpp
+
+
+========================================================
+4. FUNÇÃO DE CADA ARQUIVO
+========================================================
+
+--------------------------------------------------------
+4.1 Pilha.h
+--------------------------------------------------------
+
+Responsável pela definição da estrutura da pilha.
+
+Contém:
+- declaração da classe
+- estrutura do nó
+- métodos públicos da pilha
+
+
+--------------------------------------------------------
+4.2 Pilha.cpp
+--------------------------------------------------------
+
+Responsável pela implementação dos métodos da pilha.
+
+Contém:
+- inserção
+- remoção
+- verificação
+- exibição
+- liberação de memória
+
+
+--------------------------------------------------------
+4.3 main.cpp
+--------------------------------------------------------
+
+Responsável pela lógica principal do programa.
+
+Contém:
+- leitura da palavra
+- verificação de palíndromo
+- exibição do resultado
+
+
+========================================================
+5. ESTRUTURA DA PILHA
+========================================================
+
+A pilha foi implementada utilizando lista encadeada
+dinâmica.
+
+Cada elemento da pilha é representado por um nó.
+
+Estrutura do nó:
+
+struct No {
+    char dado;
+    No* proximo;
+};
+
+Explicação:
+
+dado     -> armazena o caractere
+proximo  -> aponta para o próximo nó
+
+
+========================================================
+6. FUNCIONAMENTO DA PILHA
+========================================================
+
+A pilha segue o modelo:
+
+LIFO (Last In, First Out)
+
+Ou seja:
+
+O último elemento inserido
+é o primeiro a ser removido.
+
+
+========================================================
+7. EXEMPLO DE FUNCIONAMENTO
+========================================================
+
+Palavra:
+
+ovo
+
+
+Empilhamento:
+
+TOPO
+ ↓
+[o]
+[v]
+[o]
+
+
+Desempilhamento:
+
+o -> v -> o
+
+
+========================================================
+8. LÓGICA DO ALGORITMO
+========================================================
+
+O algoritmo funciona em duas etapas principais.
+
+
+--------------------------------------------------------
+8.1 Empilhamento
+--------------------------------------------------------
+
+Todos os caracteres da palavra são inseridos na pilha.
+
+Código:
+
+for (char c : texto) {
+    pilha.push(c);
+}
+
+
+--------------------------------------------------------
+8.2 Comparação
+--------------------------------------------------------
+
+O programa percorre novamente a palavra original
+comparando:
+
+- caractere atual da palavra
+- caractere presente no topo da pilha
+
+Código:
+
+if (c != pilha.top())
+
+
+Como a pilha inverte a ordem dos caracteres,
+a comparação permite verificar se a palavra
+permanece igual invertida.
+
+
+========================================================
+9. EXEMPLO DE PALÍNDROMO
+========================================================
+
+Palavra:
+
+arara
+
+
+Comparações:
+
+a == a
+r == r
+a == a
+r == r
+a == a
+
+
+Resultado:
+
+Palíndromo verdadeiro
+
+
+========================================================
+10. EXEMPLO DE NÃO PALÍNDROMO
+========================================================
+
+Palavra:
+
+casa
+
+
+Comparação:
+
+c != a
+
+
+Resultado:
+
+Não é palíndromo
+
+
+========================================================
+11. MÉTODOS IMPLEMENTADOS
+========================================================
+
+--------------------------------------------------------
+11.1 push()
+--------------------------------------------------------
+
+Responsável por inserir um elemento no topo da pilha.
+
+Fluxo:
+
+Cria novo nó
+↓
+Armazena caractere
+↓
+Aponta para topo antigo
+↓
+Atualiza topo
+
+
+--------------------------------------------------------
+11.2 pop()
+--------------------------------------------------------
+
+Responsável por remover o elemento do topo.
+
+Fluxo:
+
+Guarda topo atual
+↓
+Move topo para próximo nó
+↓
+Libera memória
+
+
+--------------------------------------------------------
+11.3 top()
+--------------------------------------------------------
+
+Responsável por retornar o caractere presente no topo
+da pilha sem removê-lo.
+
+
+--------------------------------------------------------
+11.4 isEmpty()
+--------------------------------------------------------
+
+Responsável por verificar se a pilha está vazia.
+
+
+--------------------------------------------------------
+11.5 exibir()
+--------------------------------------------------------
+
+Responsável por mostrar os elementos armazenados
+na pilha.
+
+
+========================================================
+12. ALOCAÇÃO DINÂMICA
+========================================================
+
+A pilha utiliza memória dinâmica através do operador:
+
+new
+
+para criar nós dinamicamente.
+
+A liberação da memória é feita utilizando:
+
+delete
+
+
+========================================================
+13. DESTRUTOR DA PILHA
+========================================================
+
+O destrutor foi implementado para evitar vazamento
+de memória.
+
+Método:
+
+~Pilha()
+
+
+========================================================
+14. FLUXO DO PROGRAMA
+========================================================
+
+Usuário digita palavra
+↓
+Caracteres são empilhados
+↓
+Programa compara caracteres
+↓
+Verifica igualdade
+↓
+Retorna verdadeiro ou falso
+
+
+========================================================
+15. COMPLEXIDADE DO ALGORITMO
+========================================================
+
+Inserção:      O(1)
+Remoção:       O(1)
+Verificação:   O(n)
+
+
+========================================================
+16. JUSTIFICATIVA DA SOLUÇÃO
+========================================================
+
+A utilização da pilha foi escolhida porque sua
+característica LIFO permite inverter naturalmente
+a ordem dos caracteres da palavra.
+
+Isso possibilita comparar:
+- palavra original
+- palavra invertida
+
+sem necessidade de criar outra string manualmente.
+
+
+========================================================
+17. CONCLUSÃO
+========================================================
+
+O projeto demonstrou a aplicação prática de pilhas
+dinâmicas utilizando TAD em C++.
+
+Além disso, foram utilizados conceitos importantes
+de Estrutura de Dados, como:
+
+- listas encadeadas
+- manipulação de ponteiros
+- alocação dinâmica
+- encapsulamento
+- organização modular do código
+
+========================================================

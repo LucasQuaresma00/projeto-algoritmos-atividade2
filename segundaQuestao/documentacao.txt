@@ -1,0 +1,406 @@
+========================================================
+DOCUMENTAÇÃO — SISTEMA DE DANCETERIA
+UTILIZANDO FILA DINÂMICA EM C++
+========================================================
+
+1. OBJETIVO DO PROJETO
+--------------------------------------------------------
+
+O projeto tem como objetivo simular o funcionamento
+de uma danceteria utilizando filas dinâmicas em C++.
+
+O sistema recebe pessoas na fila e forma pares de
+dança respeitando a ordem de chegada.
+
+As regras utilizadas são:
+
+- Homem dança com mulher
+- Mulher dança com homem
+- Quem não encontrar par permanece aguardando
+
+
+========================================================
+2. CONCEITOS UTILIZADOS
+========================================================
+
+O projeto utiliza os seguintes conceitos:
+
+- Fila dinâmica
+- Lista encadeada
+- Ponteiros
+- TAD (Tipo Abstrato de Dados)
+- Alocação dinâmica de memória
+- Encapsulamento
+- FIFO (First In, First Out)
+
+
+========================================================
+3. ESTRUTURA DO PROJETO
+========================================================
+
+O sistema foi dividido em arquivos para melhorar a
+organização do código.
+
+Arquivos:
+
+Pessoa.h
+Fila.h
+Fila.cpp
+main.cpp
+
+
+========================================================
+4. FUNÇÃO DE CADA ARQUIVO
+========================================================
+
+--------------------------------------------------------
+4.1 Pessoa.h
+--------------------------------------------------------
+
+Responsável por representar uma pessoa da danceteria.
+
+Cada pessoa possui:
+
+- nome
+- gênero
+
+
+--------------------------------------------------------
+4.2 Fila.h
+--------------------------------------------------------
+
+Responsável pela definição da estrutura da fila.
+
+Contém:
+
+- declaração da classe
+- estrutura do nó
+- métodos públicos da fila
+
+
+--------------------------------------------------------
+4.3 Fila.cpp
+--------------------------------------------------------
+
+Responsável pela implementação dos métodos da fila.
+
+Contém:
+
+- inserção
+- remoção
+- verificação
+- exibição
+- liberação de memória
+
+
+--------------------------------------------------------
+4.4 main.cpp
+--------------------------------------------------------
+
+Responsável pela lógica principal do sistema.
+
+Contém:
+
+- cadastro das pessoas
+- verificação das filas
+- formação dos pares
+- exibição dos resultados
+
+
+========================================================
+5. ESTRUTURA DA FILA
+========================================================
+
+A fila foi implementada utilizando lista encadeada
+dinâmica.
+
+Cada elemento da fila é representado por um nó.
+
+Estrutura do nó:
+
+struct No {
+    Pessoa pessoa;
+    No* proximo;
+};
+
+Explicação:
+
+pessoa   -> armazena os dados da pessoa
+proximo  -> aponta para o próximo nó
+
+
+========================================================
+6. FUNCIONAMENTO DA FILA
+========================================================
+
+A fila segue o modelo:
+
+FIFO (First In, First Out)
+
+Ou seja:
+
+O primeiro elemento inserido
+é o primeiro a ser removido.
+
+
+========================================================
+7. EXEMPLO DE FUNCIONAMENTO
+========================================================
+
+Chegada das pessoas:
+
+João (M)
+Carlos (M)
+Maria (F)
+
+
+Fluxo:
+
+1. João chega
+→ entra na fila masculina
+
+2. Carlos chega
+→ entra na fila masculina
+
+3. Maria chega
+→ forma casal com João
+
+
+Resultado:
+
+Casal formado:
+João + Maria
+
+Fila masculina:
+Carlos
+
+
+========================================================
+8. LÓGICA DO ALGORITMO
+========================================================
+
+O algoritmo funciona da seguinte forma:
+
+--------------------------------------------------------
+8.1 Entrada de Pessoa
+--------------------------------------------------------
+
+O usuário informa:
+
+- nome
+- gênero
+
+
+--------------------------------------------------------
+8.2 Verificação da Fila Oposta
+--------------------------------------------------------
+
+O sistema verifica se existe alguém aguardando
+na fila oposta.
+
+Exemplo:
+
+Se um homem chegar:
+→ verifica fila feminina
+
+Se uma mulher chegar:
+→ verifica fila masculina
+
+
+--------------------------------------------------------
+8.3 Formação de Casal
+--------------------------------------------------------
+
+Se existir alguém esperando:
+
+→ forma casal
+→ remove pessoa da fila
+
+
+--------------------------------------------------------
+8.4 Entrada na Fila
+--------------------------------------------------------
+
+Caso não exista parceiro disponível:
+
+→ pessoa entra na fila correspondente
+
+
+========================================================
+9. EXEMPLO VISUAL DAS FILAS
+========================================================
+
+Fila masculina:
+
+Frente
+ ↓
+[João] -> [Carlos] -> [Pedro]
+
+
+Fila feminina:
+
+Frente
+ ↓
+[Ana] -> [Maria]
+
+
+========================================================
+10. MÉTODOS IMPLEMENTADOS
+========================================================
+
+--------------------------------------------------------
+10.1 enqueue()
+--------------------------------------------------------
+
+Responsável por inserir uma pessoa no final da fila.
+
+Fluxo:
+
+Cria novo nó
+↓
+Armazena pessoa
+↓
+Liga ao final da fila
+↓
+Atualiza ponteiro traseiro
+
+
+--------------------------------------------------------
+10.2 dequeue()
+--------------------------------------------------------
+
+Responsável por remover a pessoa da frente.
+
+Fluxo:
+
+Guarda frente atual
+↓
+Move frente para próximo nó
+↓
+Libera memória
+
+
+--------------------------------------------------------
+10.3 front()
+--------------------------------------------------------
+
+Responsável por retornar a pessoa presente na frente
+da fila sem removê-la.
+
+
+--------------------------------------------------------
+10.4 isEmpty()
+--------------------------------------------------------
+
+Responsável por verificar se a fila está vazia.
+
+
+--------------------------------------------------------
+10.5 exibir()
+--------------------------------------------------------
+
+Responsável por mostrar os elementos armazenados
+na fila.
+
+
+========================================================
+11. ALOCAÇÃO DINÂMICA
+========================================================
+
+A fila utiliza memória dinâmica através do operador:
+
+new
+
+para criar nós dinamicamente.
+
+A liberação da memória é feita utilizando:
+
+delete
+
+
+========================================================
+12. DESTRUTOR DA FILA
+========================================================
+
+O destrutor foi implementado para evitar vazamento
+de memória.
+
+Método:
+
+~Fila()
+
+
+========================================================
+13. FLUXO DO PROGRAMA
+========================================================
+
+Pessoa chega
+↓
+Sistema identifica gênero
+↓
+Verifica fila oposta
+↓
+Existe parceiro disponível?
+↓
+SIM → Forma casal
+NÃO → Entra na fila
+↓
+Atualiza filas
+
+
+========================================================
+14. COMPLEXIDADE DO ALGORITMO
+========================================================
+
+Inserção:      O(1)
+Remoção:       O(1)
+Verificação:   O(1)
+
+As operações possuem complexidade constante devido
+ao uso dos ponteiros de frente e trás.
+
+
+========================================================
+15. JUSTIFICATIVA DA SOLUÇÃO
+========================================================
+
+A utilização da fila foi escolhida porque a estrutura
+FIFO representa corretamente a ordem de chegada das
+pessoas na danceteria.
+
+Isso garante que:
+
+quem chegou primeiro
+dance primeiro.
+
+
+========================================================
+16. VANTAGENS DA SOLUÇÃO
+========================================================
+
+- Estrutura dinâmica
+- Crescimento automático
+- Controle eficiente de memória
+- Organização modular
+- Encapsulamento
+- Respeito à ordem de chegada
+
+
+========================================================
+17. CONCLUSÃO
+========================================================
+
+O projeto demonstrou a aplicação prática de filas
+dinâmicas utilizando TAD em C++.
+
+Além disso, foram utilizados conceitos importantes
+de Estrutura de Dados, como:
+
+- listas encadeadas
+- manipulação de ponteiros
+- alocação dinâmica
+- encapsulamento
+- organização modular do código
+- funcionamento FIFO
+
+========================================================
